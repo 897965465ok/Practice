@@ -39,7 +39,7 @@
     "html-withimg-loader": "^0.1.16",
     "html2canvas": "^1.0.0-rc.5",
     "jszip": "^3.3.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "system": "^2.0.1",
     "ts-loader": "^5.3.3",
     "url-loader": "^2.3.0"
