@@ -1,14 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-let webpack = require('webpack');
+const webpack = require('webpack');
+
 module.exports = {
     entry: {
-        main: './src/js/index.ts'
+        index: './src/pages/index/index.js',
+        bfc: './src/pages/bfc/index.js'
     },
     output: {
-        filename: 'main.[hash:5].js',
-        path: path.resolve('./dist')
-
+        path: path.resolve(__dirname, './dist'),
+        filename: '[name].[hash].js', // 对应下面的文件名字 filename: 'bfc.html',
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js"]
@@ -23,8 +24,17 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            chunks: ['index'],
+            template: './src/pages/index/index.html',
             hash: true,
+            filename: 'index.html',
+
+        }),
+        new HtmlWebpackPlugin({
+            chunks: ['bfc'],
+            template: './src/pages/bfc/bfc.html',
+            hash: true,
+            filename: 'bfc.html',
         })
     ],
     module: {
